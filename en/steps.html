@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ 
+	
+<!-- header::Start -->
+	<head>
+		<!-- Use Internet Explorer 9 Standards mode for Eclipse Browser Control - https://www.eclipse.org/swt/faq.php#browsernativeie and https://msdn.microsoft.com/en-us/library/jj676915%28v=vs.85%29.aspx -->
+  		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		
+		<!-- Next 2 http=equiv headers required to disable caching the Eclipse Browser Widget -->
+		<meta http-equiv="Pragma" content="no-cache">
+  		<meta http-equiv="Expires" content="-1">
+
+		<meta charset="UTF-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta name="copyright" content="Copyright IBM Corporation 2014" />
+		<meta name="abstract" content="IBM Integration Bus V10 Tutorial">
+		<meta name="author" content="IBM">
+		<meta name="description" content="IBM Integration Bus V10 Tutorial">
+		<meta name="keywords" content="keywords" > 
+		<meta name="robots" content="index,follow">
+		<meta name="source" content="IBM Integration Bus V10 Tutorial" /> 
+		
+		<title>IBM Integration Bus V10 Tutorial</title>
+
+    	<link rel="stylesheet" href="http://ot4i.github.io/iib-tutorials/css/main.css" />
+		<link rel="stylesheet" href="http://ot4i.github.io/iib-tutorials/css/app.css" />
+    	
+		<script src="http://ot4i.github.io/iib-tutorials/js/json2.js"></script>
+		<script src="http://ot4i.github.io/iib-tutorials/js/js2java.js"></script>
+		<script src="http://ot4i.github.io/iib-tutorials/js/js2java_steps.js"></script>
+		<script src="http://ot4i.github.io/iib-tutorials/js/vendor/modernizr.js"></script>
+	</head>
+<!-- header::End -->
+<!-- body::Start -->
+		<body>
+  	<!-- body content here -->
+	<div class="row">
+	  <div class="small-12 medium-12 large-12 columns">
+	    <p> </p>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="small-9 medium-9 large-9 columns">
+	    <h4 class="title">Using the KAFKA Producer and KAFKA Consumer nodes within a message flow <action><button class="small radius button" tabindex="0" id="stepsViewDetails" onclick="viewDetails()"> View Details</button> </action></h4>
+	  </div>
+	  <div class="small-3 medium-3 large-3 columns">
+		<a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm')" class="small right helplink">IBM Knowledge Center</a> 
+	  </div>
+	</div> 
+	<hr>
+	<div class="row">
+		<div class="small-10 medium-10 large-10 columns">
+		<h5> Learn how to use a KAFKA Producer and KAFKA Consumer node to publish and subscribe to a topic. </h5>
+		</div>
+		<div class="small-2 medium-2 large-2 columns">
+			<button class="small radius button right" tabindex="0" id="backToGallery" onclick="backToGallery()"> Back To Gallery
+			</button>
+		</div>
+	</div>
+	<div class="row">          
+		  <div class="small-12 medium-12 large-12 columns">
+			<ul class="tabs vertical"> 
+				<li class="tab-title tab-title-small active">
+				  <a href="javascript:;" onclick="show('panel21')">Create</a> 
+				</li>
+				<li class="tab-title tab-title-small">
+				  <a href="javascript:;" onclick="show('panel31')">Prepare</a> 
+				</li>
+				<li class="tab-title tab-title-small">
+				  <a href="javascript:;" onclick="show('panel41')">Run</a> 
+				</li>
+			</ul>
+			<!-- editing -->
+			<div class="tabs-content panel-thin-blue vertical"> 
+		    	<div class="content active" id="panel21">
+		    		
+		    		<div class="small-10 medium-10 large-10 columns divider">
+					
+				      	<div class="row content-details">
+					      	<h4>Import projects</h4>
+					        
+						    
+								<p> When you click Import, two applications will be created in your workspace: <span class="application">KafkaProducerApplication</span> and <span class="application">KafkaConsumerApplication</span>. </p>
+								
+							
+								<p> <span class="application">KafkaProducerApplication</span> implements a single message flow with a HTTPInput, KafkaProducer and HTTPReply nodes. </p>
+								
+							
+								<p> <span class="application">KafkaConsumerApplication</span> implements a single message flow wit a KafkaConsumer and FileOutput nodes. </p>
+								
+							
+								<p> In this tutorial, these two applications will run in the same integration server. With additional configuration they can run on different servers or even on different machines. </p>
+								
+							
+								<p> This tutorial can be run against any stand alone Apache Kafka server such as the IBM Bluemix Message hub. </p>
+								
+							
+								<p> Once you import the tutorial, you will see red crosses against the two Kafka applications. This is because a few setup steps are required befor the Kafka nodes can process messages. These are explained when you move onto the Prepare tab. </p>
+								
+							
+						</div>
+						
+						<div class="row content-details">
+							<h4>Find out more</h4>
+							<ul>
+							
+								
+																
+								<li> <a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.mft.doc/bi12002_.htm')" title="Knowledge Center link to Developing integration solutions by using applications">Developing integration solutions by using applications</a> </li>
+							   	
+							
+							</ul>
+						</div>
+						
+					</div>
+					
+					<div class="small-2 medium-2 large-2 columns">
+					
+					
+					<h4 class="tkaction"><a href="javascript:;" onclick="importArtifacts(); openResource('MainFlow')"> Import <img class="icon-image" src="http://ot4i.github.io/iib-tutorials/images/icons/ibmdesign/back-right-previous_128-orange.png"></a></h4>
+										
+				    </div>
+					
+		    	</div>
+		    	<div class="content" id="panel31">
+					
+					<div class="small-12 medium-12 large-12 columns">
+					
+						<div class="row content-details">
+						  	<h4>Imported projects</h4>
+						    
+						    
+								<p> Before you can deploy the flows there are some setup steps that need to be completed. </p>
+								
+								
+									
+									<ol>
+									
+									
+										<li> Within your own Apache kafka server, ie. IBM Bluemix Message hub, create a topic. Write the name down.
+										
+										</li>
+									
+										<li> Open the service credentials and write down the Bootstrap server name listed. 
+										
+										
+											
+											<ul>
+											
+												
+													<li> If using IBM Bluemix Message hub or your server uses security, you will also need to note down the <span class="varname">user</span> and <span class="varname">password</span> values.</li>
+												
+											
+											</ul>
+											
+										
+										</li>
+									
+										<li> Open message flows <span class="application">KafkaProducerFlow.msgflow</span> and <span class="application">KafkaConsumerFlow.msgflow</span>.  Make the following changes to the Kafka nodes.
+										
+										
+											
+											<ol>
+											
+												
+													<li> Topic name*  set this to the one that you created on your Kafka server.</li>
+												
+													<li> Bootstrap servers*  set this to the one listed in the Credentials above.</li>
+												
+													<li> If using IBM Bluemix Message hub or security you will also need to set the Security protocol* appropriatly.  If using IBM Bluemix Message hub you will neded to select SASL_SSL</li>
+												
+											
+											</ol>
+											
+										
+										</li>
+									
+										<li> Within the <span class="application">KafkaConsumerFlow.msgflow</span> you will also need to change the File Output node, Directory and File name.
+										
+										</li>
+									
+										<li> If you are using IBM Bluemix Message hub or your server uses security then you will need to issue the following command from the IIB Command Console.
+										
+										
+											
+											<ul>
+											
+												
+													<li> mqsisetdbparms <span class="varname">integrationNodeName</span> -n kafka::KAFKA::<span class="varname">server</span> -u <span class="varname">user</span> -p <span class="varname">password</span></li>
+												
+													<li> Restart the Integration Node.</li>
+												
+											
+											</ul>
+											
+										
+										</li>
+									
+									
+									</ol>
+									
+								
+							
+								<p> You are now ready to exercise the flows. To exercise the flows move onto the Run tab. </p>
+								
+							
+						</div>
+						
+						<div class="row content-details">
+							<h4>Find out more</h4>
+							<ul>
+							
+								
+																
+								<li> <a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.mft.doc/bi12002_.htm')" title="Knowledge Center link to Developing integration solutions by using integration services">Developing integration solutions by using integration services</a> </li>
+							   	
+							
+							</ul>
+						</div>
+							
+					</div>
+					
+		    	</div>
+		    	<div class="content" id="panel41">
+		    		
+		    		<div class="small-10 medium-10 large-10 columns divider">
+					
+				    	<div class="row content-details">
+					      	<h4>Follow these steps to complete the tutorial</h4>
+					        
+						    
+								<p> Use the Flow Exercisor in the <span class="resource">KafkaProducerFlow.msgflow</span> and <span class="resource">KafkaConsumerFlow.msgflow</span> to run this tutorial. </p>
+								
+								
+									
+									<ol>
+									
+									
+										<li> Open <span class="resource">KafkaConsumerFlow.msgflow</span>.
+										
+										
+											
+											<ul>
+											
+												
+													<li> click the Flow Exerciser icon <img src="http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow</li>
+												
+											
+											</ul>
+											
+										
+										</li>
+									
+										<li> Open <span class="resource">KafkaProducerFlow.msgflow</span>.
+										
+										
+											
+											<ul>
+											
+												
+													<li> click the Flow Exerciser icon <img src="http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow</li>
+												
+													<li> Click the Send Message icon <img src="http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png" alt> to select a message to send to the flow.</li>
+												
+													<li> Choose the input message and click Send. Your request message is sent to the HTTP input node.</li>
+												
+													<li> When the list of actions is shown, click on the Received HTTP reply message... item to show the output from the flow. This wil be the same as the message that you sent in.</li>
+												
+											
+											</ul>
+											
+										
+										</li>
+									
+										<li> After you close the dialog, the path taken through the messageflow is highlighted. Click on the message icon on each connection to see how the tree is updated by each node.
+										
+										</li>
+									
+										<li> Going to the output directory that you specified on the Fileoutput node you should see a file that containe the message that you sent in.
+										
+										</li>
+									
+									
+									</ol>
+									
+								
+							
+								<p> You can further experiment with this scenario by stopping the <span class="application">KafkaConsumerFlow.msgflow</span>,  passing messages through the <span class="application">KafkaProducerFlow.msgflow</span> then start <span class="application">KafkaConsumerFlow.msgflow</span> and see what has arrived in the Fileoutput node file. </p>
+								
+							
+								<p> This tutorial shows the invoking of the <span class="application">KafkaConsumer</span> and <span class="application">KafkaProducer</span> nodes running in the same integration server, which requires no additional setup. You can also use these applications to experiment with running the invoking flows flow on different integration servers or different machines. </p>
+								
+							
+						</div>
+						
+						<div class="row content-details"> 	
+							<h4>Find out more</h4>
+							<ul>
+							
+								
+																
+								<li> <a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.mft.doc/bi12002_.htm')" title="Knowledge Center link to Developing integration solutions by using applications">Developing integration solutions by using applications</a> </li>
+							   	
+							
+								
+																
+								<li> <a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.mft.doc/rt26110_.htm')" title="Knowledge Center link to Testing your message flow by using the Flow exerciser">Testing your message flow by using the Flow exerciser</a> </li>
+							   	
+							
+							</ul>
+						</div>
+							
+					</div>
+					
+					<div class="small-2 medium-2 large-2 columns">
+					
+					
+					
+					
+					
+					<h4 class="tkaction"><a href="javascript:;" onclick="cleanUp()" title="Clean up and remove any changes in your workspace made by the tutorial."> Clean Up <img class="icon-image" src="http://ot4i.github.io/iib-tutorials/images/icons/ibmdesign/close-cancel-error_128-red.png"></a></h4>
+				    
+					
+				    </div>
+					
+				</div>	
+			</div> <!-- tab-content -->
+		</div> <!-- columns -->
+	  </div> <!-- row --></body>
+		<script src="http://ot4i.github.io/iib-tutorials/js/vendor/jquery.js"></script>
+		<script src="http://ot4i.github.io/iib-tutorials/js/vendor/foundation.min.js"></script>
+		<script src="http://ot4i.github.io/iib-tutorials/js/main.js"></script>
+	</body>
+<!-- body::End -->
+
+</html>
