@@ -43,7 +43,7 @@
 	</div>
 	<div class="row">
 	  <div class="small-9 medium-9 large-9 columns">
-	    <h4 class="title">Using the KAFKA Producer and KAFKA Consumer nodes within a message flow <action><button class="small radius button" tabindex="0" id="stepsViewDetails" onclick="viewDetails()"> View Details</button> </action></h4>
+	    <h4 class="title">Using the KafkaProducer and KafkaConsumer nodes within a message flow <action><button class="small radius button" tabindex="0" id="stepsViewDetails" onclick="viewDetails()"> View Details</button> </action></h4>
 	  </div>
 	  <div class="small-3 medium-3 large-3 columns">
 		<a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm')" class="small right helplink">IBM Knowledge Center</a> 
@@ -52,7 +52,7 @@
 	<hr>
 	<div class="row">
 		<div class="small-10 medium-10 large-10 columns">
-		<h5> Learn how to use a KAFKA Producer and KAFKA Consumer node to publish and subscribe to a topic. </h5>
+		<h5> Learn how to use a KafkaProducer and KafkaConsumer node to produce and consume messages using a Kafka topic. </h5>
 		</div>
 		<div class="small-2 medium-2 large-2 columns">
 			<button class="small radius button right" tabindex="0" id="backToGallery" onclick="backToGallery()"> Back To Gallery
@@ -85,19 +85,19 @@
 								<p> When you click Import, two applications will be created in your workspace: <span class="application">KafkaProducerApplication</span> and <span class="application">KafkaConsumerApplication</span>. </p>
 								
 							
-								<p> <span class="application">KafkaProducerApplication</span> implements a single message flow with a HTTPInput, KafkaProducer and HTTPReply nodes. </p>
+								<p> <span class="application">KafkaProducerApplication</span> provides a single message flow with a HTTPInput, KafkaProducer and HTTPReply nodes. </p>
 								
 							
-								<p> <span class="application">KafkaConsumerApplication</span> implements a single message flow wit a KafkaConsumer and FileOutput nodes. </p>
+								<p> <span class="application">KafkaConsumerApplication</span> provides a single message flow wit a KafkaConsumer and FileOutput nodes. </p>
 								
 							
 								<p> In this tutorial, these two applications will run in the same integration server. With additional configuration they can run on different servers or even on different machines. </p>
 								
 							
-								<p> This tutorial can be run against any stand alone Apache Kafka server such as the IBM Bluemix Message hub. </p>
+								<p> This tutorial can be run against any stand alone Apache Kafka server (https://kafka.apache.org/) at version 0.10.0.1 or above. The IBM Bluemix Message Hub service provides an easy to use cloud based Kafka implementation which you can use with this tutorial if you don't have your own Kafka server available. </p>
 								
 							
-								<p> Once you import the tutorial, you will see red crosses against the two Kafka applications. This is because a few setup steps are required befor the Kafka nodes can process messages. These are explained when you move onto the Prepare tab. </p>
+								<p> Once you import the tutorial, you will see red crosses against the two Kafka applications. This is because a few setup steps (mandatory properties)are required to complete the configuration of the Kafka nodes. These are explained when you move onto the Prepare tab. </p>
 								
 							
 						</div>
@@ -139,7 +139,7 @@
 									<ol>
 									
 									
-										<li> Within your own Apache kafka server, ie. IBM Bluemix Message hub, create a topic. Write the name down.
+										<li> Within your own Apache Kafka server, e.g. IBM Bluemix Message Hub Service, create a topic and record the name ready for step 3.
 										
 										</li>
 									
@@ -150,7 +150,7 @@
 											<ul>
 											
 												
-													<li> If using IBM Bluemix Message hub or your server uses security, you will also need to note down the <span class="varname">user</span> and <span class="varname">password</span> values.</li>
+													<li> If you are using Message Hub, the connection from IIB must be secured using SASL_SSL. Open the Service Credentials and record the Bootstrap server name, user and password..</li>
 												
 											
 											</ul>
@@ -169,7 +169,7 @@
 												
 													<li> Bootstrap servers*  set this to the one listed in the Credentials above.</li>
 												
-													<li> If using IBM Bluemix Message hub or security you will also need to set the Security protocol* appropriatly.  If using IBM Bluemix Message hub you will neded to select SASL_SSL</li>
+													<li> If using Message Hub, switch to the Security tab and set the Security protocol to be "SASL_SSL" and leave the default value for SSL protocol to be "TLSv1.2". </li>
 												
 											
 											</ol>
@@ -188,7 +188,7 @@
 											<ul>
 											
 												
-													<li> mqsisetdbparms <span class="varname">integrationNodeName</span> -n kafka::KAFKA::<span class="varname">server</span> -u <span class="varname">user</span> -p <span class="varname">password</span></li>
+													<li> mqsisetdbparms <span class="varname">integrationNodeName</span> -n kafka::KAFKA::<span class="varname">integrationServerName</span> -u <span class="varname">user</span> -p <span class="varname">password</span></li>
 												
 													<li> Restart the Integration Node.</li>
 												
@@ -209,13 +209,8 @@
 						</div>
 						
 						<div class="row content-details">
-							<h4>Find out more</h4>
+							<h4></h4>
 							<ul>
-							
-								
-																
-								<li> <a href="javascript:;" onclick="openHelpSystem('/com.ibm.etools.mft.doc/bi12002_.htm')" title="Knowledge Center link to Developing integration solutions by using integration services">Developing integration solutions by using integration services</a> </li>
-							   	
 							
 							</ul>
 						</div>
@@ -231,7 +226,7 @@
 					      	<h4>Follow these steps to complete the tutorial</h4>
 					        
 						    
-								<p> Use the Flow Exercisor in the <span class="resource">KafkaProducerFlow.msgflow</span> and <span class="resource">KafkaConsumerFlow.msgflow</span> to run this tutorial. </p>
+								<p> Use the Flow Exerciser in the <span class="resource">KafkaProducerFlow.msgflow</span> and <span class="resource">KafkaConsumerFlow.msgflow</span> to run this tutorial. </p>
 								
 								
 									
@@ -245,7 +240,7 @@
 											<ul>
 											
 												
-													<li> click the Flow Exerciser icon <img src="http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow</li>
+													<li> Click the Flow Exerciser icon <img src="http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow</li>
 												
 											
 											</ul>
@@ -260,7 +255,7 @@
 											<ul>
 											
 												
-													<li> click the Flow Exerciser icon <img src="http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow</li>
+													<li> Click the Flow Exerciser icon <img src="http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow</li>
 												
 													<li> Click the Send Message icon <img src="http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png" alt> to select a message to send to the flow.</li>
 												
@@ -278,7 +273,7 @@
 										
 										</li>
 									
-										<li> Going to the output directory that you specified on the Fileoutput node you should see a file that containe the message that you sent in.
+										<li> Go to the output directory that you specified on the FileOutput node you should see a file that contains the message that you sent in.
 										
 										</li>
 									
@@ -287,10 +282,7 @@
 									
 								
 							
-								<p> You can further experiment with this scenario by stopping the <span class="application">KafkaConsumerFlow.msgflow</span>,  passing messages through the <span class="application">KafkaProducerFlow.msgflow</span> then start <span class="application">KafkaConsumerFlow.msgflow</span> and see what has arrived in the Fileoutput node file. </p>
-								
-							
-								<p> This tutorial shows the invoking of the <span class="application">KafkaConsumer</span> and <span class="application">KafkaProducer</span> nodes running in the same integration server, which requires no additional setup. You can also use these applications to experiment with running the invoking flows flow on different integration servers or different machines. </p>
+								<p> This tutorial showed the KafkaConsumer and KafkaProducer nodes running in the same integration server. Remember if you experiment with other topologies you may need to run the mqsisetdbparms command accordingly, as the credentials for the Kafka nodes are scoped to the integration server. </p>
 								
 							
 						</div>
