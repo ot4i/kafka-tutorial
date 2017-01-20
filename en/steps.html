@@ -88,7 +88,7 @@
 								<p> <span class="application">KafkaProducerApplication</span> provides a single message flow with a HTTPInput, KafkaProducer and HTTPReply nodes. </p>
 								
 							
-								<p> <span class="application">KafkaConsumerApplication</span> provides a single message flow wit a KafkaConsumer and FileOutput nodes. </p>
+								<p> <span class="application">KafkaConsumerApplication</span> provides a single message flow with a KafkaConsumer and FileOutput nodes. </p>
 								
 							
 								<p> In this tutorial, these two applications will run in the same integration server. With additional configuration they can run on different servers or even on different machines. </p>
@@ -97,7 +97,7 @@
 								<p> This tutorial can be run against any stand alone Apache Kafka server (https://kafka.apache.org/) at version 0.10.0.1 or above. The IBM Bluemix Message Hub service provides an easy to use cloud based Kafka implementation which you can use with this tutorial if you don't have your own Kafka server available. </p>
 								
 							
-								<p> Once you import the tutorial, you will see red crosses against the two Kafka applications. This is because a few setup steps (mandatory properties)are required to complete the configuration of the Kafka nodes. These are explained when you move onto the Prepare tab. </p>
+								<p> Once you import the tutorial, you will see red crosses against the two Kafka applications. This is because a few setup steps (mandatory properties) are required to complete the configuration of the Kafka nodes. These are explained when you move onto the Prepare tab. </p>
 								
 							
 						</div>
@@ -139,22 +139,11 @@
 									<ol>
 									
 									
-										<li> Within your own Apache Kafka server, e.g. IBM Bluemix Message Hub Service, create a topic and record the name ready for step 3.
+										<li> Within your own Apache Kafka server, e.g. IBM Bluemix Message Hub Service, record the Bootstrap server name. Create a topic if you don't already have one and remember its name ready for step 3.
 										
 										</li>
 									
-										<li> Open the service credentials and write down the Bootstrap server name listed. 
-										
-										
-											
-											<ul>
-											
-												
-													<li> If you are using Message Hub, the connection from IIB must be secured using SASL_SSL. Open the Service Credentials and record the Bootstrap server name, user and password..</li>
-												
-											
-											</ul>
-											
+										<li> If you are using Message Hub, the connection from IIB must be secured using SASL_SSL. Open the Message Hub Service Credentials and remember the user and password ready for step 5. 
 										
 										</li>
 									
@@ -181,7 +170,7 @@
 										
 										</li>
 									
-										<li> If you are using IBM Bluemix Message hub or your server uses security then you will need to issue the following command from the IIB Command Console.
+										<li> If you are using IBM Bluemix Message hub or if your Kafka Server needs to authenticate the connection from IIB, then you will need to issue the following command from the IIB Command Console.
 										
 										
 											
@@ -273,7 +262,7 @@
 										
 										</li>
 									
-										<li> Go to the output directory that you specified on the FileOutput node you should see a file that contains the message that you sent in.
+										<li> Go to the output directory that you specified on the FileOutput node and you should see a file that contains the message that you sent in.
 										
 										</li>
 									
