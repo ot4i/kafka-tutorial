@@ -6,8 +6,8 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/KafkaConsumerApplication/icons/full/obj16/KafkaConsumerFlow.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/KafkaConsumerApplication/icons/full/obj30/KafkaConsumerFlow.gif"/>
     <composition>
-      <nodes xmi:type="com_ibm_connector_kafka_ComIbmEventInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="131,137" connectorName="Kafka" initialOffset="latest" enableAutoCommit="true" useClientIdSuffix="true" connectionTimeout="15" sessionTimeout="10" receiveBatchSize="1" securityProtocol="PLAINTEXT" sslProtocol="TLSv1.2" validateTiming="deferred" parserXmlnscBuildTreeUsingXMLSchema="false" parserXmlnscUseForXmlnsDomain="false" parserXmlnscMixedContentRetainMode="none" parserXmlnscCommentsRetainMode="none"
-          parserXmlnscProcessingInstructionsRetainMode="none" validateMaster="none" validateFailureAction="exception" componentLevel="flow" additionalInstances="0">
+      <nodes xmi:type="com_ibm_connector_kafka_ComIbmEventInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="131,137" connectorName="Kafka" groupId="Consumer1" initialOffset="latest" enableAutoCommit="true" useClientIdSuffix="true" connectionTimeout="15" sessionTimeout="10" receiveBatchSize="1" securityProtocol="PLAINTEXT" sslProtocol="TLSv1.2" validateTiming="deferred" parserXmlnscBuildTreeUsingXMLSchema="false" parserXmlnscUseForXmlnsDomain="false" parserXmlnscMixedContentRetainMode="none"
+          parserXmlnscCommentsRetainMode="none" parserXmlnscProcessingInstructionsRetainMode="none" validateMaster="none" validateFailureAction="exception" componentLevel="flow" additionalInstances="0">
         <translation xmi:type="utility:ConstantString" string="KafkaConsumer"/>
       </nodes>
       <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="276,141">
