@@ -1,0 +1,332 @@
+{
+    "version": "0.6",
+    "pageContent": 
+	{
+        "_comments": "KAFKA object that contains data for page labels, buttons, etc.",
+        "navItems": 
+		{
+            "_common": 
+			{
+                "buttonBackToGallery": 
+				{
+                    "name": "Back To Gallery",
+					"method": "backToGallery()",
+					"idName": "backToGallery"	
+                },
+                "buttonStartTutorial": 
+				{
+                    "name": "Start Tutorial",
+					"method": "startTutorialFromDetailsScreen()",
+					"idName": "startTutorial"
+                },
+				"buttonViewDetails": 
+				{
+                    "name": "View Details",
+					"method": "viewDetails()",
+					"idName": "stepsViewDetails"	
+                }
+            }
+        }
+    },
+    "tutorial": 
+	{
+        "_common": 
+		{
+            "name": "Using the KafkaProducer and KafkaConsumer nodes within a message flow",
+            "shortDescription": "Learn how to use a KafkaProducer and KafkaConsumer node to produce and consume messages using a Kafka topic.",
+            "durationText": "This tutorial takes approximately",
+            "durationTime": "5 minutes",
+            "_resourceToOpenComment": "The ID of the first resource to open when the user imports the tutorial. Resource IDs are defined in the repo_metadata.json Tutorials listing on ot4i.",
+            "resourceToOpen": "MainFlow",
+            "helpLink": 
+			{
+                "text": "IBM Knowledge Center",
+                "link": "/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm"
+            }
+        },
+        "pageDetails": 
+		{
+            "topicsName": "Tutorial Topics",
+            "_topicListComment": "A short list of product concepts or tasks demonstrated by this tutorial",
+            "topicList": 
+			[
+                {
+                    "title": "KafkaProducer and KafkaConsumer nodes etc"
+                },
+                {
+                    "title": "Produce a topic message"
+                },
+                {
+                    "title": "Consume a topic message"
+                }
+            ],
+            "outcomesName": "Learning outcomes",
+            "_outcomesComment": "A description of what the user will have learned or accomplished by running this tutorial.",
+            "outcomeList": 
+			[
+                {
+                    "title": "Use IBM Integration Bus to produce and consume messages using the KafkaProducer and KafkaConsumer nodes."
+                }
+            ],
+            "summary": 
+			{
+                "overviewName": "OVERVIEW",
+                "_overviewComment": "A short description of what happens in this tutorial, and an optional short explanation of the IIB concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
+                "sections": 
+				[
+                    {
+                        "section": "This tutorial demonstrates a simple message flow that Produces a message using a KafkaProducer node. A seperate flow then consumes the message using a KafkaConsumer node."
+                    },
+                    {
+                        "section": "This tutorial requires an Apache kafka server.  This could be IBM Bluemix Message hub or your own stand alone server."
+                    },
+                    {
+                        "section": "In IBM Integration Bus, an application is a container for all the resources that are required to create a solution. An application can contain IBM Integration Bus resources, such as flows, message definitions, libraries, and JAR files. An application is used to hold the message flow in this tutorial."
+                    }
+                ]
+            },
+			"helpLinks": 
+			{
+				"_helpLinksComment": "Helplinks that have a type:web attribute are rendered as web links. Otherwise, links are assumed to be to embedded Help topics in the Knowledge Center.",
+				"title": "Find out more",
+				"details": 
+				[
+					{
+						"title": "Knowledge Center link to ",
+						"description": "Developing integration solutions by using applications",
+						"link": "com.ibm.etools.mft.doc/bi12002_.htm",
+						"type": "help"
+					},
+					{
+						"title": "GitHub link to ",
+						"description": "DFDL Schemas",
+						"link": "http://github.com/DFDLSchemas",
+						"type": "web"
+					}
+				]
+			}
+        },
+        "pageSteps": 
+		{
+            "create": 
+			{
+                "overview": 
+				{
+                    "name": "Create",
+                    "heading": "Import projects",
+                    "_createComment": "A description of what will happen when the user clicks Import.",
+                    "sections": 
+					[
+                        {
+                            "section": "When you click Import, two applications will be created in your workspace: <span class='application'>KafkaProducerApplication</span> and <span class='application'>KafkaConsumerApplication</span>."
+                        },
+                        {
+                            "section": "<span class='application'>KafkaProducerApplication</span> provides a single message flow with a HTTPInput, KafkaProducer and HTTPReply nodes." 
+                        },
+                        {
+                            "section": "<span class='application'>KafkaConsumerApplication</span> provides a single message flow with a KafkaConsumer and FileOutput nodes."
+                        },
+			{
+			    "section": "In this tutorial, these two applications will run in the same integration server. With additional configuration they can run on different servers or even on different machines."
+                        },
+			{
+			    "section": "This tutorial can be run against any stand alone Apache Kafka server (https://kafka.apache.org/) at version 0.10.0.1 or above. The IBM Bluemix Message Hub service provides an easy to use cloud based Kafka implementation which you can use with this tutorial if you don't have your own Kafka server available."
+			},
+			{
+			    "section": "Once you import the tutorial, you will see red crosses against the two Kafka applications. This is because a few setup steps (mandatory properties) are required to complete the configuration of the Kafka nodes. These are explained when you move onto the Prepare tab."
+			}
+                    ]
+                },
+                "helpLinks": 
+				{
+                    "title": "Find out more",
+                    "details": 
+					[
+                        {
+                            "title": "Knowledge Center link to ",
+                            "description": "Developing integration solutions by using applications",
+                            "link": "com.ibm.etools.mft.doc/bi12002_.htm"
+                        }
+                    ]
+                },
+                "actions": 
+				{
+                    "title": "Create Actions",
+                    "details": 
+					[
+                        {
+                            "name": "Import",
+                            "method": "importArtifacts()"
+                        }
+                    ]
+                }
+            },
+            "prepare": 
+			{
+                "overview": 
+				{
+                    "name": "Prepare",
+                    "heading": "Imported projects",
+                    "_prepareComment": "A description of what just happened when the user clicked Import, and what will happen when the user clicks Deploy.",
+                    "sections": 
+		     [
+                        {
+                            "section": "Before you can deploy the flows there are some setup steps that need to be completed.",
+                            "steps": 
+			    {
+                                "type": "ordered",
+                                "details": 
+				[
+                                    {
+                                        "details": "Within your own Apache Kafka server, e.g. IBM Bluemix Message Hub Service, record the Bootstrap server name. Create a topic if you don't already have one and remember its name ready for step 3."
+                                    },
+                                    {
+                                        "details": "If you are using Message Hub, the connection from IIB must be secured using SASL_SSL. Open the Message Hub Service Credentials and remember the user and password ready for step 5. "
+                                    },
+                                    {
+                                        "details": "Open message flows <span class='application'>KafkaProducerFlow.msgflow</span> and <span class='application'>KafkaConsumerFlow.msgflow</span>.  Make the following changes to the Kafka nodes.",
+                                        "substeps":{
+                                        "type": "ordered",
+                                        "details": 
+					[
+                                          {
+                                            "details": "Topic name*  set this to the one that you created on your Kafka server."
+                                          },
+                                          {
+                                            "details": "Bootstrap servers*  set this to the one listed in the Credentials above."
+                                          },                   
+                                          {
+                                            "details": "If using Message Hub, switch to the Security tab and set the Security protocol to be \"SASL_SSL\" and leave the default value for SSL protocol to be \"TLSv1.2\". "
+                                          }                   
+                                        ]
+                                      }
+				                    },
+				                    {
+                                        "details": "Within the <span class='application'>KafkaConsumerFlow.msgflow</span> you will also need to change the File Output node, Directory and File name."
+				                    },
+				                    {
+                                        "details": "If you are using IBM Bluemix Message hub or if your Kafka Server needs to authenticate the connection from IIB, then you will need to issue the following command from the IIB Command Console.",
+                                    "substeps":{
+                                    "type": "unordered",
+                                    "details": 
+								    [
+                                        {
+                                          "details": "mqsisetdbparms <span class='varname'>integrationNodeName</span> -n kafka::KAFKA::<span class='varname'>integrationServerName</span> -u <span class='varname'>user</span> -p <span class='varname'>password</span>"
+                                        },  
+                                        {
+                                          "details": "Restart the Integration Node."
+                                        }
+                                      ]
+                                      }
+				                    }
+                                ]
+                            }
+                        },
+                    			{
+			        "section": "You are now ready to exercise the flows. To exercise the flows move onto the Run tab."
+		    	}
+             ]
+                },
+                "helpLinks": 
+				{
+                }
+            },
+            "run": 
+			{
+                "overview": 
+				{
+                    "name": "Run",
+                    "heading": "Follow these steps to complete the tutorial",
+                    "_runComment": "The full steps for the user to run through the tutorial. Use 'sections' to render paragraphs, 'steps' with a type of 'ordered' or 'unordered' to render HTML lists, and 'substeps' to render nested lists.",
+                    "sections": 
+					[
+                        {
+                            "section": "Use the Flow Exerciser in the <span class='resource'>KafkaProducerFlow.msgflow</span> and <span class='resource'>KafkaConsumerFlow.msgflow</span> to run this tutorial.",
+                            "steps": 
+							{
+                                "type": "ordered",
+                                "details": 
+								[
+                                    {
+                                        "details": "Open <span class='resource'>KafkaConsumerFlow.msgflow</span>.",
+                                    "substeps":{
+                                    "type": "unordered",
+                                    "details": 
+								    [
+                                        {
+                                          "details": "Click the Flow Exerciser icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png' alt='' /> to start testing the flow"
+                                        }
+                                      ]
+                                      }
+                                    },
+                                    {
+                                        "details": "Open <span class='resource'>KafkaProducerFlow.msgflow</span>.",
+                                    "substeps":{
+                                    "type": "unordered",
+                                    "details": 
+								    [
+                                        {
+                                          "details": "Click the Flow Exerciser icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png' alt='' /> to start testing the flow"
+                                        },
+                                        {
+                                            "details": "Click the Send Message icon <img src='http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png' alt='' />."
+                                        },
+                                        {
+                                            "details": "Create a new message and click Send. Your message is sent to the HTTP input node."
+				        },
+				        {
+                                            "details": "When the list of actions is shown, click on the Received HTTP reply message... item to show the output from the flow. This wil be the same as the message that you sent in."
+				        }
+                                      ]
+                                      }
+                                    },
+				    {
+                                        "details": "After you close the dialog, the path taken through the messageflow is highlighted. Click on the message icon on each connection to see how the tree is updated by each node."
+				    },
+				    {
+                                        "details": "Go to the output directory that you specified on the FileOutput node and you should see a file that contains the message that you sent in."
+					}
+                                ]
+                            }
+                        },
+			{
+			    "section": "This tutorial showed the KafkaConsumer and KafkaProducer nodes running in the same integration server. Remember if you experiment with other topologies you may need to run the mqsisetdbparms command accordingly, as the credentials for the Kafka nodes are scoped to the integration server."
+			}
+                    ]
+                },
+                "helpLinks": 
+				{
+                    "title": "Find out more",
+                    "details": 
+					[
+                        {
+                            "title": "Knowledge Center link to ",
+                            "description": "Developing integration solutions by using applications",
+                            "link": "com.ibm.etools.mft.doc/bi12002_.htm"
+                        },
+                        {
+                            "title": "Knowledge Center link to ",
+                            "description": "Testing your message flow by using the Flow exerciser",
+                            "link": "com.ibm.etools.mft.doc/rt26110_.htm"
+                        }
+                    ]
+                },
+		"exits": 
+		{
+			"title": "Run Exits",
+			"details": 
+			[
+				{
+					"name": "Clean Up",
+					"description": "Clean up and remove any changes in your workspace made by the tutorial.",
+					"method": "cleanUp()"
+				}
+			]
+		}
+            }
+        }
+    }
+}
+
+
+
