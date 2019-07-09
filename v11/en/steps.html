@@ -15,14 +15,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<meta name="copyright" content="Copyright IBM Corporation 2014" />
-		<meta name="abstract" content="IBM Integration Bus V10 Tutorial">
+		<meta name="abstract" content="IBM App Connect Enterprise V11 Tutorial">
 		<meta name="author" content="IBM">
-		<meta name="description" content="IBM Integration Bus V10 Tutorial">
+		<meta name="description" content="IBM App Connect Enterprise V11 Tutorial">
 		<meta name="keywords" content="keywords" > 
 		<meta name="robots" content="index,follow">
-		<meta name="source" content="IBM Integration Bus V10 Tutorial" /> 
+		<meta name="source" content="IBM App Connect Enterprise V11 Tutorial" /> 
 		
-		<title>IBM Integration Bus V10 Tutorial</title>
+		<title>IBM App Connect Enterprise V11 Tutorial</title>
 
     	<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/main.css" />
 		<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/app.css" />
@@ -94,7 +94,7 @@
 								<p> In this tutorial, these two applications will run in the same integration server. With additional configuration they can run on different servers or even on different machines. </p>
 								
 							
-								<p> This tutorial can be run against any stand alone Apache Kafka server (https://kafka.apache.org/) at version 0.10.0.1 or above. The IBM Bluemix Message Hub service provides an easy to use cloud based Kafka implementation which you can use with this tutorial if you don't have your own Kafka server available. </p>
+								<p> This tutorial can be run against any stand alone Apache Kafka server (https://kafka.apache.org/). The ACEv11 KafkaConsumer and KafkaProducer nodes are built upon a Java Kafka client. ACE v11.0.0.0 to ACEv11.0.0.4 use Kafka client version 0.10.0.1. ACEv11.0.0.5 uses Kafka client version 2.2.0. If you don't have your own Kafka server available, then the IBM Cloud Event Streams service provides an easy to use cloud based Kafka implementation which you can use with this tutorial. </p>
 								
 							
 								<p> Once you import the tutorial, you will see red crosses against the two Kafka applications. This is because a few setup steps (mandatory properties) are required to complete the configuration of the Kafka nodes. These are explained when you move onto the Prepare tab. </p>
@@ -139,11 +139,11 @@
 									<ol>
 									
 									
-										<li> Within your own Apache Kafka server, e.g. IBM Bluemix Message Hub Service, record the Bootstrap server name. Create a topic if you don't already have one and remember its name ready for step 3.
+										<li> Within your own Apache Kafka server, e.g. IBM Cloud Event Streams Service, record the Bootstrap server name. Create a topic if you don't already have one and remember its name ready for step 3.
 										
 										</li>
 									
-										<li> If you are using Message Hub, the connection from IIB must be secured using SASL_SSL. Open the Message Hub Service Credentials and remember the user and password ready for step 5. 
+										<li> If you are using Event Streams, the connection from ACE must be secured using SASL_SSL. Open the Event Streams Service Credentials and remember the user and password ready for step 5. 
 										
 										</li>
 									
@@ -170,16 +170,24 @@
 										
 										</li>
 									
-										<li> If you are using IBM Bluemix Message hub or if your Kafka Server needs to authenticate the connection from IIB, then you will need to issue the following command from the IIB Command Console.
+										<li> If you are using IBM Cloud Event Streams or if your Kafka Server needs to authenticate the connection from ACE, then you will need to provide credentials using the mqsisetdbparms command from the ACE Command Console.
 										
 										
 											
 											<ul>
 											
 												
-													<li> mqsisetdbparms <span class="varname">integrationNodeName</span> -n kafka::KAFKA::<span class="varname">integrationServerName</span> -u <span class="varname">user</span> -p <span class="varname">password</span></li>
+													<li> If you intend to use a node-owned integration server then issue the following command:</li>
+												
+													<li> mqsisetdbparms <span class="varname">integrationNodeName</span> -n kafka::KAFKA::<span class="varname">integrationServerName</span> -u <span class="varname">token</span> -p <span class="varname">password</span></li>
 												
 													<li> Restart the Integration Node.</li>
+												
+													<li> If you intend to use a stand-alone integration server then issue the following command:</li>
+												
+													<li> mqsisetdbparms -w <span class="varname">work-directory</span> -n kafka::KAFKA -u <span class="varname">token</span> -p <span class="varname">password</span></li>
+												
+													<li> Restart the Integration Server.</li>
 												
 											
 											</ul>
@@ -209,7 +217,7 @@
 		    	</div>
 		    	<div class="content" id="panel41">
 		    		
-		    		<div class="small-10 medium-10 large-10 columns divider">
+					<div class="small-12 medium-12 large-12 columns">
 					
 				    	<div class="row content-details">
 					      	<h4>Follow these steps to complete the tutorial</h4>
@@ -262,6 +270,10 @@
 										
 										</li>
 									
+										<li> Return to the <span class="resource">KafkaConsumerFlow.msgflow</span> and click the View Path icon <img src="https://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/viewPath.png" alt> and you should see that the same message has been received back by ACE.
+										
+										</li>
+									
 										<li> Go to the output directory that you specified on the FileOutput node and you should see a file that contains the message that you sent in.
 										
 										</li>
@@ -294,17 +306,6 @@
 						</div>
 							
 					</div>
-					
-					<div class="small-2 medium-2 large-2 columns">
-					
-					
-					
-					
-					
-					<h4 class="tkaction"><a href="javascript:;" onclick="cleanUp()" title="Clean up and remove any changes in your workspace made by the tutorial."> Clean Up <img class="icon-image" src="https://ot4i.github.io/iib-tutorials/images/icons/ibmdesign/close-cancel-error_128-red.png"></a></h4>
-				    
-					
-				    </div>
 					
 				</div>	
 			</div> <!-- tab-content -->
