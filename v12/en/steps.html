@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ 
+	
+<!-- header::Start -->
+	<head>
+		<!-- Use Internet Explorer 9 Standards mode for Eclipse Browser Control - https://www.eclipse.org/swt/faq.php#browsernativeie and https://msdn.microsoft.com/en-us/library/jj676915%28v=vs.85%29.aspx -->
+  		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		
+		<!-- Next 2 http=equiv headers required to disable caching the Eclipse Browser Widget -->
+		<meta http-equiv="Pragma" content="no-cache">
+  		<meta http-equiv="Expires" content="-1">
+
+		<meta charset="UTF-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta name="copyright" content="Copyright IBM Corporation 2014" />
+		<meta name="abstract" content="IBM App Connect Enterprise V11 Tutorial">
+		<meta name="author" content="IBM">
+		<meta name="description" content="IBM App Connect Enterprise V11 Tutorial">
+		<meta name="keywords" content="keywords" > 
+		<meta name="robots" content="index,follow">
+		<meta name="source" content="IBM App Connect Enterprise V11 Tutorial" /> 
+		
+		<title>IBM App Connect Enterprise V11 Tutorial</title>
+
+    	<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/main.css" />
+		<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/app.css" />
+    	
+		<script src="https://ot4i.github.io/iib-tutorials/js/json2.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/js2java.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/js2java_steps.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/modernizr.js"></script>
+	</head>
+<!-- header::End -->
+<!-- body::Start -->
+		<body>
+  	<!-- body content here -->
+	<div class="row">
+	  <div class="small-12 medium-12 large-12 columns">
+	    <p> </p>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="small-9 medium-9 large-9 columns">
+	    <h4 class="title">Using the KafkaProducer and KafkaConsumer nodes within a message flow <action><button class="small radius button" tabindex="0" id="stepsViewDetails" onclick="viewDetails()"> View Details</button> </action></h4>
+	  </div>
+	  <div class="small-3 medium-3 large-3 columns">
+		<a href="javascript:;" onclick="openExternalBrowser('https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.ace.home.doc/help_home.htm')" class="small right helplink">IBM Knowledge Center</a> 
+	  </div>
+	</div> 
+	<hr>
+	<div class="row">
+		<div class="small-10 medium-10 large-10 columns">
+		<h5> Learn how to use a KafkaProducer and KafkaConsumer node to produce and consume messages using a Kafka topic. </h5>
+		</div>
+		<div class="small-2 medium-2 large-2 columns">
+			<button class="small radius button right" tabindex="0" id="backToGallery" onclick="backToGallery()"> Back To Gallery
+			</button>
+		</div>
+	</div>
+	<div class="row">          
+		  <div class="small-12 medium-12 large-12 columns">
+			<ul class="tabs vertical"> 
+				<li class="tab-title tab-title-small active">
+				  <a href="javascript:;" onclick="show('panel21')">Create</a> 
+				</li>
+				<li class="tab-title tab-title-small">
+				  <a href="javascript:;" onclick="show('panel31')">Prepare</a> 
+				</li>
+				<li class="tab-title tab-title-small">
+				  <a href="javascript:;" onclick="show('panel41')">Run</a> 
+				</li>
+			</ul>
+			<!-- editing -->
+			<div class="tabs-content panel-thin-blue vertical"> 
+		    	<div class="content active" id="panel21">
+		    		
+		    		<div class="small-10 medium-10 large-10 columns divider">
+					
+				      	<div class="row content-details">
+					      	<h4>Import projects</h4>
+					        
+						    
+								<p> When you click Import, two applications will be created in your workspace: <span class="application">KafkaProducerApplication</span> and <span class="application">KafkaConsumerApplication</span>. </p>
+								
+							
+								<p> <span class="application">KafkaProducerApplication</span> provides a single message flow with a HTTPInput, KafkaProducer and HTTPReply nodes. </p>
+								
+							
+								<p> <span class="application">KafkaConsumerApplication</span> provides a single message flow with a KafkaConsumer and FileOutput nodes. </p>
+								
+							
+								<p> In this tutorial, these two applications will run in the same integration server. With additional configuration they can run on different servers or even on different machines. </p>
+								
+							
+								<p> This tutorial can be run against any stand alone Apache Kafka server (https://kafka.apache.org/). The ACEv11 KafkaConsumer and KafkaProducer nodes are built upon a Java Kafka client. ACE v11.0.0.0 to ACEv11.0.0.4 use Kafka client version 0.10.0.1. ACEv11.0.0.5 uses Kafka client version 2.2.0. If you don't have your own Kafka server available, then the IBM Cloud Event Streams service provides an easy to use cloud based Kafka implementation which you can use with this tutorial. </p>
+								
+							
+								<p> Once you import the tutorial, you will see red crosses against the two Kafka applications. This is because a few setup steps (mandatory properties) are required to complete the configuration of the Kafka nodes. These are explained when you move onto the Prepare tab. </p>
+								
+							
+						</div>
+						
+						<div class="row content-details">
+							<h4>Find out more</h4>
+							<ul>
+							
+								
+								
+								<li> <a href="javascript:;" onclick="openExternalBrowser('https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/bi12002_.htm')" title="Knowledge Center link to  Developing integration solutions by using applications">Developing integration solutions by using applications</a> </li>
+									
+							
+							</ul>
+						</div>
+						
+					</div>
+					
+					<div class="small-2 medium-2 large-2 columns">
+					
+					
+					<h4 class="tkaction"><a href="javascript:;" onclick="importArtifacts(); openResource('MainFlow')"> Import <img class="icon-image" src="https://ot4i.github.io/iib-tutorials/images/icons/ibmdesign/back-right-previous_128-orange.png"></a></h4>
+										
+				    </div>
+					
+		    	</div>
+		    	<div class="content" id="panel31">
+					
+					<div class="small-12 medium-12 large-12 columns">
+					
+						<div class="row content-details">
+						  	<h4>Imported projects</h4>
+						    
+						    
+								<p> Before you can deploy the flows there are some setup steps that need to be completed. </p>
+								
+								
+									
+									<ol>
+									
+									
+										<li> Within your own Apache Kafka server, e.g. IBM Cloud Event Streams Service, record the Bootstrap server name. Create a topic if you don't already have one and remember its name ready for step 3.
+										
+										</li>
+									
+										<li> If you are using Event Streams, the connection from ACE must be secured using SASL_SSL. Open the Event Streams Service Credentials and remember the user and password ready for step 5. 
+										
+										</li>
+									
+										<li> Open message flows <span class="application">KafkaProducerFlow.msgflow</span> and <span class="application">KafkaConsumerFlow.msgflow</span>.  Make the following changes to the Kafka nodes.
+										
+										
+											
+											<ol>
+											
+												
+													<li> Topic name*  set this to the one that you created on your Kafka server.</li>
+												
+													<li> Bootstrap servers*  set this to the one listed in the Credentials above.</li>
+												
+													<li> If using Message Hub, switch to the Security tab and set the Security protocol to be "SASL_SSL" and leave the default value for SSL protocol to be "TLSv1.2". </li>
+												
+											
+											</ol>
+											
+										
+										</li>
+									
+										<li> Within the <span class="application">KafkaConsumerFlow.msgflow</span> you will also need to change the File Output node, Directory and File name.
+										
+										</li>
+									
+										<li> If you are using IBM Cloud Event Streams or if your Kafka Server needs to authenticate the connection from ACE, then you will need to provide credentials using the mqsisetdbparms command from the ACE Command Console.
+										
+										
+											
+											<ul>
+											
+												
+													<li> If you intend to use a node-owned integration server then issue the following command:</li>
+												
+													<li> mqsisetdbparms <span class="varname">integrationNodeName</span> -n kafka::KAFKA::<span class="varname">integrationServerName</span> -u <span class="varname">token</span> -p <span class="varname">password</span></li>
+												
+													<li> Restart the Integration Node.</li>
+												
+													<li> If you intend to use a stand-alone integration server then issue the following command:</li>
+												
+													<li> mqsisetdbparms -w <span class="varname">work-directory</span> -n kafka::KAFKA -u <span class="varname">token</span> -p <span class="varname">password</span></li>
+												
+													<li> Restart the Integration Server.</li>
+												
+											
+											</ul>
+											
+										
+										</li>
+									
+									
+									</ol>
+									
+								
+							
+								<p> You are now ready to exercise the flows. To exercise the flows move onto the Run tab. </p>
+								
+							
+						</div>
+						
+						<div class="row content-details">
+							<h4></h4>
+							<ul>
+							
+							</ul>
+						</div>
+							
+					</div>
+					
+		    	</div>
+		    	<div class="content" id="panel41">
+		    		
+					<div class="small-12 medium-12 large-12 columns">
+					
+				    	<div class="row content-details">
+					      	<h4>Follow these steps to complete the tutorial</h4>
+					        
+						    
+								<p> Use the Flow Exerciser in the <span class="resource">KafkaProducerFlow.msgflow</span> and <span class="resource">KafkaConsumerFlow.msgflow</span> to run this tutorial. </p>
+								
+								
+									
+									<ol>
+									
+									
+										<li> Open <span class="resource">KafkaConsumerFlow.msgflow</span>.
+										
+										
+											
+											<ul>
+											
+												
+													<li> Click the Flow Exerciser icon <img src="https://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow</li>
+												
+											
+											</ul>
+											
+										
+										</li>
+									
+										<li> Open <span class="resource">KafkaProducerFlow.msgflow</span>.
+										
+										
+											
+											<ul>
+											
+												
+													<li> Click the Flow Exerciser icon <img src="https://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow</li>
+												
+													<li> Click the Send Message icon <img src="https://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png" alt>.</li>
+												
+													<li> Create a new message and click Send. Your message is sent to the HTTP input node.</li>
+												
+													<li> When the list of actions is shown, click on the Received HTTP reply message... item to show the output from the flow. This wil be the same as the message that you sent in.</li>
+												
+											
+											</ul>
+											
+										
+										</li>
+									
+										<li> After you close the dialog, the path taken through the messageflow is highlighted. Click on the message icon on each connection to see how the tree is updated by each node.
+										
+										</li>
+									
+										<li> Return to the <span class="resource">KafkaConsumerFlow.msgflow</span> and click the View Path icon <img src="https://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/viewPath.png" alt> and you should see that the same message has been received back by ACE.
+										
+										</li>
+									
+										<li> Go to the output directory that you specified on the FileOutput node and you should see a file that contains the message that you sent in.
+										
+										</li>
+									
+									
+									</ol>
+									
+								
+							
+								<p> This tutorial showed the KafkaConsumer and KafkaProducer nodes running in the same integration server. Remember if you experiment with other topologies you may need to run the mqsisetdbparms command accordingly, as the credentials for the Kafka nodes are scoped to the integration server. </p>
+								
+							
+						</div>
+						
+						<div class="row content-details"> 	
+							<h4>Find out more</h4>
+							<ul>
+							
+								
+								
+								<li> <a href="javascript:;" onclick="openExternalBrowser('https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/bi12002_.htm')" title="Knowledge Center link to  Developing integration solutions by using applications">Developing integration solutions by using applications</a> </li>
+									
+							
+								
+								
+								<li> <a href="javascript:;" onclick="openExternalBrowser('https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/rt26110_.htm')" title="Knowledge Center link to  Testing your message flow by using the Flow exerciser">Testing your message flow by using the Flow exerciser</a> </li>
+									
+							
+							</ul>
+						</div>
+							
+					</div>
+					
+				</div>	
+			</div> <!-- tab-content -->
+		</div> <!-- columns -->
+	  </div> <!-- row --></body>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/jquery.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/foundation.min.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/main.js"></script>
+	</body>
+<!-- body::End -->
+
+</html>
