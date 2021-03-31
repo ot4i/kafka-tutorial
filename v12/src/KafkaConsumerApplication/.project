@@ -86,6 +86,11 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
+			<name>com.ibm.etools.mft.policy.ui.policybuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
 			<name>com.ibm.etools.msg.validation.dfdl.dfdlqnamevalidator</name>
 			<arguments>
 			</arguments>
