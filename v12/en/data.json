@@ -32,7 +32,7 @@
 	{
         "_common": 
 		{
-            "name": "Using the KafkaProducer and KafkaConsumer nodes within a message flow",
+            "name": "Using the KafkaProducer and KafkaConsumer nodes with a Kafka topic",
             "shortDescription": "Learn how to use a KafkaProducer and KafkaConsumer node to produce and consume messages using a Kafka topic.",
             "durationText": "This tutorial takes approximately",
             "durationTime": "5 minutes",
