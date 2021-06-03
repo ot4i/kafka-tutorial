@@ -40,8 +40,8 @@
             "resourceToOpen": "MainFlow",
             "helpLink": 
 			{
-                "text": "IBM Knowledge Center",
-           		"link": "https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.ace.home.doc/help_home.htm"
+                "text": "IBM Documentation",
+           		"link": "https://www.ibm.com/docs/SSTTDS_12.0/com.ibm.etools.mft.doc/acesw_home.html"
             }
         },
         "pageDetails": 
@@ -92,9 +92,9 @@
 				"details": 
 				[
 					{
-						"title": "Knowledge Center link to ",
-						"description": "Developing integration solutions by using applications",
-						"link": "https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/bi12002_.htm",
+						"title": "IBM Documentation link to ",
+						"description": "Developing integration solutions from scratch",
+						"link": "https://www.ibm.com/docs/SSTTDS_12.0/com.ibm.etools.mft.doc/bi12002_.htm",
 						"type": "web"
 					},
 					{
@@ -143,10 +143,10 @@
                     "details": 
 					[
                         {
-                            "title": "Knowledge Center link to ",
-                            "description": "Developing integration solutions by using applications",
-                            "link": "https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/bi12002_.htm",
-							"type": "web"
+						"title": "IBM Documentation link to ",
+						"description": "Developing integration solutions from scratch",
+						"link": "https://www.ibm.com/docs/SSTTDS_12.0/com.ibm.etools.mft.doc/bi12002_.htm",
+						"type": "web"
                         }
                     ]
                 },
@@ -316,16 +316,16 @@
                     "details": 
 					[
                         {
-                            "title": "Knowledge Center link to ",
-                            "description": "Developing integration solutions by using applications",
-                            "link": "https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/bi12002_.htm",
-							"type": "web"
+						"title": "IBM Documentation link to ",
+						"description": "Developing integration solutions from scratch",
+						"link": "https://www.ibm.com/docs/SSTTDS_12.0/com.ibm.etools.mft.doc/bi12002_.htm",
+						"type": "web"
                         },
                         {
-                            "title": "Knowledge Center link to ",
-                            "description": "Testing your message flow by using the Flow exerciser",
-                            "link": "https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/rt26110_.htm",
-							"type": "web"
+						"title": "IBM Documentation link to ",
+						"description": "Testing your message flow by using the Flow exerciser",
+						"link": "https://www.ibm.com/docs/SSTTDS_12.0/com.ibm.etools.mft.doc/rt26110_.htm",
+						"type": "web"
                         }
                     ]
                 }
