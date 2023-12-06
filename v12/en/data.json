@@ -78,7 +78,7 @@
                         "section": "This tutorial demonstrates a simple message flow that Produces a message using a KafkaProducer node. A seperate flow then consumes the message using a KafkaConsumer node."
                     },
                     {
-                        "section": "This tutorial requires an Apache Kafka server.  This could be the Event Streams service available on IBM Cloud (which is a fully managed service built with the open source Apache Kafka project), or your own stand alone Kafka implementation."						
+                        "section": "This tutorial requires an Apache Kafka server.  This could be the IBM Cloud Event Streams service available on IBM Cloud (which is a fully managed service built with the open source Apache Kafka project), or your own stand alone Kafka implementation."						
                     },
                     {
                         "section": "In IBM App Connect Enterprise, an application is a container for all the resources that are required to create a solution. An application can contain IBM App Connect Enterprise resources, such as flows, message definitions, libraries, and JAR files. An application is used to hold the message flow in this tutorial."
@@ -182,7 +182,7 @@
                                         "details": "Within your own Apache Kafka server, e.g. IBM Cloud Event Streams Service, record the Bootstrap server name. Create a topic if you don't already have one and remember its name ready for step 3."
                                     },
                                     {
-                                        "details": "If you are using Event Streams, the connection from ACE must be secured using SASL_SSL. Open the Event Streams Service Credentials and remember the user and password ready for step 5. "
+                                        "details": "If you are using IBM Cloud Event Streams, the connection from ACE must be secured using SASL_SSL. Open the IBM Cloud Event Streams service in your web browser and in the contents page at the left side of the screen, navigate to the section named <code>Service Credentials</code>. If you haven't yet created some credentials click <code>New credential</code> to create a new set of credentials (for simplicity choose the Manager role and click the Add button). Once the service credentials have been created, click the Copy button and paste the snippet of JSON to somewhere convenient such as a text editor. The particular properties which you wlil need are <code>bootstrap_endpoints</code>, <code>password</code> and <code>user</code> (which will be hard-coded to the value <code>token</code>). "
                                     },
                                     {
                                         "details": "Open message flows <span class='application'>KafkaProducerFlow.msgflow</span> and <span class='application'>KafkaConsumerFlow.msgflow</span>.  Make the following changes to the Kafka nodes.",
@@ -197,16 +197,20 @@
                                             "details": "Bootstrap servers*  set this to the one listed in the Credentials above."
                                           },                   
                                           {
-                                            "details": "If using Message Hub, switch to the Security tab and set the Security protocol to be \"SASL_SSL\" and leave the default value for SSL protocol to be \"TLSv1.2\". "
-                                          }                   
+                                            "details": "If you are using IBM Cloud Event Streams, switch to the Security tab and set the Security protocol to be \"SASL_SSL\" and leave the default value for SSL protocol to be \"TLSv1.2\". "
+                                          },
+                                          {
+                                            "details": "Also on the Security tab set the Security identity to be KAFKA"
+                                          } 
+                   
                                         ]
                                       }
 				                    },
 				                    {
-                                        "details": "Within the <span class='application'>KafkaConsumerFlow.msgflow</span> you will also need to change the File Output node, Directory and File name."
+                                        "details": "Within the <span class='application'>KafkaConsumerFlow.msgflow</span> you will also need to change the File Output node properties for <code>Directory</code> and <code>File name or pattern</code>."
 				                    },
 				                    {
-                                        "details": "If you are using IBM Cloud Event Streams or if your Kafka Server needs to authenticate the connection from ACE, then you will need to provide credentials using the mqsisetdbparms command from the ACE Command Console.",
+                                        "details": "If you are using IBM Cloud Event Streams or if your Kafka Server needs to authenticate the connection from ACE, then you will need to provide credentials from the ACE Command Console using either the mqsisetdbparms command or the mqsicredentials command (if you are using the integration server's vault to encrypt the stored credentials).",
                                     "substeps":{
                                     "type": "unordered",
                                     "details": 
@@ -216,6 +220,12 @@
                                         },  
                                         {
                                           "details": "mqsisetdbparms <span class='varname'>integrationNodeName</span> -n kafka::KAFKA::<span class='varname'>integrationServerName</span> -u <span class='varname'>token</span> -p <span class='varname'>password</span>"
+                                        },
+					{
+                                          "details": "Alternatively if your node-owned integration server has a vault defined (for more information about configuring a vault, please consult <a href="https://www.ibm.com/docs/en/app-connect/12.0?topic=enterprise-configuring-app-connect-vault">the documentation</a>), then issue the following command:"
+                                        },  
+                                        {
+                                          "details": "mqsicredentials <span class='varname'>integrationNodeName</span> --integration-server <span class='varname'>integrationServerName</span> --create --credential-type kafka --credential-name KAFKA --username <span class='varname'>token</span> --password <span class='varname'>password</span> --vault-key <span class='varname'>yourvaultkey</span>"
                                         },  
                                         {
                                           "details": "Restart the Integration Node."
@@ -226,6 +236,15 @@
                                         {
                                           "details": "mqsisetdbparms -w <span class='varname'>work-directory</span> -n kafka::KAFKA -u <span class='varname'>token</span> -p <span class='varname'>password</span>"
                                         },  
+
+
+{
+                                          "details": "Alternatively if your stand-alone integration server has a vault defined (for more information about configuring a vault, please consult <a href="https://www.ibm.com/docs/en/app-connect/12.0?topic=enterprise-configuring-app-connect-vault">the documentation</a>), then issue the following command:"
+                                        },  
+                                        {
+                                          "details": "mqsicredentials --work-dir <span class='varname'>work-directory</span> --create --credential-type kafka --credential-name KAFKA --username <span class='varname'>token</span> --password <span class='varname'>password</span> --vault-key <span class='varname'>yourvaultkey</span>"
+                                        },  
+
 										 {
                                           "details": "Restart the Integration Server."
                                         }
@@ -306,7 +325,7 @@
                             }
                         },
 			{
-			    "section": "This tutorial showed the KafkaConsumer and KafkaProducer nodes running in the same integration server. Remember if you experiment with other topologies you may need to run the mqsisetdbparms command accordingly, as the credentials for the Kafka nodes are scoped to the integration server."
+			    "section": "This tutorial showed the KafkaConsumer and KafkaProducer nodes running in the same integration server. Remember if you experiment with other topologies you may need to run the mqsisetdbparms command or mqsicredentials command accordingly, as the credentials for the Kafka nodes are scoped to the integration server."
 			}
                     ]
                 },
