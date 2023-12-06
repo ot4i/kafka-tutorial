@@ -222,7 +222,7 @@
                                           "details": "mqsisetdbparms <span class='varname'>integrationNodeName</span> -n kafka::KAFKA::<span class='varname'>integrationServerName</span> -u <span class='varname'>token</span> -p <span class='varname'>password</span>"
                                         },
 					{
-                                          "details": "Alternatively if your node-owned integration server has a vault defined (for more information about configuring a vault, please consult <a href="https://www.ibm.com/docs/en/app-connect/12.0?topic=enterprise-configuring-app-connect-vault">the documentation</a>), then issue the following command:"
+                                          "details": "Alternatively if your node-owned integration server has a vault defined (for more information about configuring a vault, please consult the documentation), then issue the following command:"
                                         },  
                                         {
                                           "details": "mqsicredentials <span class='varname'>integrationNodeName</span> --integration-server <span class='varname'>integrationServerName</span> --create --credential-type kafka --credential-name KAFKA --username <span class='varname'>token</span> --password <span class='varname'>password</span> --vault-key <span class='varname'>yourvaultkey</span>"
@@ -239,7 +239,7 @@
 
 
 {
-                                          "details": "Alternatively if your stand-alone integration server has a vault defined (for more information about configuring a vault, please consult <a href="https://www.ibm.com/docs/en/app-connect/12.0?topic=enterprise-configuring-app-connect-vault">the documentation</a>), then issue the following command:"
+                                          "details": "Alternatively if your stand-alone integration server has a vault defined (for more information about configuring a vault, please consult the documentation), then issue the following command:"
                                         },  
                                         {
                                           "details": "mqsicredentials --work-dir <span class='varname'>work-directory</span> --create --credential-type kafka --credential-name KAFKA --username <span class='varname'>token</span> --password <span class='varname'>password</span> --vault-key <span class='varname'>yourvaultkey</span>"
